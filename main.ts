@@ -4,13 +4,6 @@ namespace SpriteKind {
     export const Boat1 = SpriteKind.create()
     export const Boat2 = SpriteKind.create()
 }
-/**
- * TODO:
- * 
- * 1. Continue CPU player functions
- * 
- * 2. Fix bugs: Players can attack the same location twice, boat placement bugs
- */
 // moveBoat needs changes to take in the boatRotateArrayP1 or boatRotateArrayP2
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     rotateFlag = "nothing"
@@ -97,7 +90,9 @@ function CPUMove () {
     switchPlayer()
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (moveBoatFlag == 3) {
+    if (true) {
+    	
+    } else if (moveBoatFlag == 3) {
         if (currentPlayer == "Player1") {
             isHitOrMiss(boatSpriteArrayP2, hitOrMissP1)
             switchPlayer()
@@ -447,6 +442,14 @@ function cpuPlaceBoat1 () {
         grid.place(boatSpriteArrayP2[1][0], grid.add(grid.getLocation(cursor), 0, 0))
         grid.place(boatSpriteArrayP2[1][1], grid.add(grid.getLocation(cursor), 0, 1))
         grid.place(boatSpriteArrayP2[1][2], grid.add(grid.getLocation(cursor), 0, 2))
+    }
+}
+function isAttackingTwice (boomSpriteArrayPX: Sprite[]) {
+    for (let currentBoomSprite of boomSpriteArrayPX) {
+        let mySprite: Sprite = null
+        if (grid.spriteCol(currentBoomSprite) == grid.spriteCol(mySprite) && grid.spriteRow(currentBoomSprite) == grid.spriteRow(mySprite)) {
+        	
+        }
     }
 }
 function initP2 () {
